@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15803d">
+  <meta name="description" content="A simple e-waste segregation prototype: repair, resell, or responsibly recycle electronics.">
+  <title>E-Waste Segregation | Repair · Resell · Recycle</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="brand"><span aria-hidden="true">♻️</span> E-Waste Segregation</div>
+      <span class="prototype-tag">Working prototype</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">GIVE ELECTRONICS A BETTER NEXT STEP</p>
+        <h1 id="hero-title">Repair it. Resell it. <span>Recycle it right.</span></h1>
+        <p class="lead">Add an old electronic item and find out where it belongs, based on its type and condition. Keep a simple list of everything you've submitted.</p>
+        <a class="button button-primary" href="#upload">+ Add an item</a>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <div class="cycle-ring"><span>♻</span></div>
+      </div>
+    </section>
+
+    <section class="container pathways" aria-label="Segregation pathways">
+      <article class="path-card repair-card">
+        <div class="path-icon" aria-hidden="true">🔧</div>
+        <h2>Repair</h2>
+        <p>Electronics that could be fixed and used again.</p>
+      </article>
+      <article class="path-card resale-card">
+        <div class="path-icon" aria-hidden="true">🛒</div>
+        <h2>Resale</h2>
+        <p>Working electronics that could be reused by someone else.</p>
+      </article>
+      <article class="path-card recycle-card">
+        <div class="path-icon" aria-hidden="true">🏭</div>
+        <h2>Recycle</h2>
+        <p>Non-working items and batteries for appropriate recycling.</p>
+      </article>
+    </section>
+
+    <div class="container workspace">
+      <section class="panel upload-panel" id="upload" aria-labelledby="form-title">
+        <p class="eyebrow">01 / ADD AN ITEM</p>
+        <h2 id="form-title">Upload an item</h2>
+        <p class="panel-intro">Choose the item and its condition. A photo is optional.</p>
+        <form id="item-form">
+          <div class="field">
+            <label for="type">Item type</label>
+            <select id="type" name="type" required>
+              <option>Breadboard</option>
+              <option>Motherboard</option>
+              <option>Cable / Wire</option>
+              <option>Charger / Adapter</option>
+              <option>Battery</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="condition">Condition</label>
+            <select id="condition" name="condition" required>
+              <option value="working">Working</option>
+              <option value="repair">Needs repair</option>
+              <option value="notworking">Not working</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="photo">Item photo <span class="optional">(optional)</span></label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <p class="field-hint">Images are resized before being saved on this device. Maximum upload: 10 MB.</p>
+          </div>
+          <button class="button button-primary submit-btn" type="submit" id="submitBtn">Sort & save item</button>
+          <p id="result" class="result" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel submissions-panel" aria-labelledby="submissions-title">
+        <div class="submissions-heading">
+          <div>
+            <p class="eyebrow">02 / YOUR ITEMS</p>
+            <h2 id="submissions-title">Submitted items <span id="total-count" class="total-count">0</span></h2>
+          </div>
+          <button id="clearBtn" class="button button-quiet" type="button">Clear all</button>
+        </div>
+        <p class="panel-intro">Stored locally in this browser — not shared with buyers, repair shops, or recyclers.</p>
+
+        <div class="listing-group">
+          <div class="listing-title"><h3>🔧 Repair</h3><span id="count-Repair" class="count">0</span></div>
+          <div id="list-Repair" class="item-list"></div>
+        </div>
+        <div class="listing-group">
+          <div class="listing-title"><h3>🛒 Resale</h3><span id="count-Resale" class="count">0</span></div>
+          <div id="list-Resale" class="item-list"></div>
+        </div>
+        <div class="listing-group">
+          <div class="listing-title"><h3>🏭 Recycle</h3><span id="count-Recycle" class="count">0</span></div>
+          <div id="list-Recycle" class="item-list"></div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="container notice" aria-label="Important safety note">
+      <strong>Battery safety:</strong> Batteries are always placed in the special recycling category in this demo. Do not put batteries in household waste, puncture them, or handle damaged or swollen batteries without appropriate guidance. Use an authorized collection channel.
+    </aside>
+  </main>
+
+  <footer class="site-footer">E-Waste Segregation · Browser-based demo · No account required</footer>
+</body>
+</html>
